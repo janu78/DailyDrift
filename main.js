@@ -1,5 +1,5 @@
+const apikey = config.NEWS_API_KEY;
 
-const apikey = '7ec7297f94dd4aec81c71f0e1b2dc211'; //Newsapi
 
         const blogcontainer = document.getElementById("blog");
         const searchField = document.getElementById('search');
