@@ -7,8 +7,11 @@ const apikey = config.NEWS_API_KEY;
 
         async function fetchRandomNews() {
             try {
-                const apiUrl = `https://newsapi.org/v2/top-headlines?country=us&pageSize=15&apikey=${apikey}`;
-                const response = await fetch(apiUrl); //to get data,then return
+                const proxy = "https://api.allorigins.win/raw?url=";
+                const apiUrl = `https://newsapi.org/v2/top-headlines?country=us&pageSize=15&apiKey=${apikey}`;
+                const finalUrl = proxy + encodeURIComponent(apiUrl);
+
+               const response = await fetch(finalUrl); //to get data,then return
                 const data = await response.json();
                 return data.articles;
             } catch (error) {
@@ -19,8 +22,14 @@ const apikey = config.NEWS_API_KEY;
 
         async function fetchNewsByQuery(query) {
             try {
+                // const apiUrl = `https://newsapi.org/v2/everything?q=${query}&pageSize=15&apikey=${apikey}`;
+                // const response = await fetch(apiUrl);
+                const proxy = "https://api.allorigins.win/raw?url=";
                 const apiUrl = `https://newsapi.org/v2/everything?q=${query}&pageSize=15&apikey=${apikey}`;
-                const response = await fetch(apiUrl);
+                const finalUrl = proxy + encodeURIComponent(apiUrl);
+
+                const response = await fetch(finalUrl);
+
                 const data = await response.json();
                 return data.articles;
             } catch (error) {
