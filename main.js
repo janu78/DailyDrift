@@ -92,7 +92,6 @@ const blogcontainer = document.getElementById("blog");
 const searchField = document.getElementById('search');
 const searchButton = document.getElementById('search-btn');
 
-// Fetch Top Headlines from GNews
 async function fetchRandomNews() {
     try {
         const apiUrl = `https://gnews.io/api/v4/top-headlines?lang=en&country=us&max=15&apikey=${apikey}`;
@@ -108,7 +107,6 @@ async function fetchRandomNews() {
     }
 }
 
-// Search News by Query
 async function fetchNewsByQuery(query) {
     try {
         const apiUrl = `https://gnews.io/api/v4/search?q=${encodeURIComponent(query)}&lang=en&country=us&max=15&apikey=${apikey}`;
@@ -126,8 +124,8 @@ async function fetchNewsByQuery(query) {
 
 function displayBlog(articles) {
     blogcontainer.innerHTML = "";
-    if (!articles.length) {
-        displayErrorMessage("No news articles available.");
+    if (!articles || articles.length === 0) {
+        displayErrorMessage("No articles to display.");
         return;
     }
 
@@ -137,7 +135,7 @@ function displayBlog(articles) {
 
         const img = document.createElement("img");
         img.src = article.image || 'https://placehold.co/600x400';
-        img.alt = article.title;
+        img.alt = article.title || "No Image";
 
         const title = document.createElement("h2");
         title.textContent = article.title?.slice(0, 40) + '...' || "No Title";
