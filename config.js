@@ -1,3 +1,3 @@
 const config = {
-    NEWS_API_KEY: '7ec7297f94dd4aec81c71f0e1b2dc211'
+    GNEWS_API_KEY: 'ae0bf5dd2a5eb7e929ac66459a74b8bb'
 };
